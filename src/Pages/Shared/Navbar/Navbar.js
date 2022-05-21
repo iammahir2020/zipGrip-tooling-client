@@ -31,13 +31,13 @@ const Navbar = () => {
             <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
 
-          <div class="dropdown dropdown-end w-52">
-            <label tabindex="0" class="btn btn-accent w-full">
+          <div className="dropdown dropdown-end w-52">
+            <label tabIndex="0" className="btn btn-accent w-full">
               {user?.displayName}
             </label>
             <ul
-              tabindex="0"
-              class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+              tabIndex="0"
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
                 <button
@@ -89,8 +89,8 @@ const Navbar = () => {
           <p className="flex justify-center items-center">
             <img className="w-[50px]" src={logo} alt="" />
             <span>
-              <span className="text-xl md:text-3xl mr-1">ZipGrip</span>
-              <span className="text-xl md:text-3xl">Tooling</span>
+              <span className="text-lg md:text-3xl mr-1">ZipGrip</span>
+              <span className="text-lg md:text-3xl">Tooling</span>
             </span>
           </p>
         </NavLink>
