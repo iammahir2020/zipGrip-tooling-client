@@ -7,6 +7,8 @@ import Navbar from "./Pages/Shared/Navbar/Navbar";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 import Blogs from "./Pages/Blogs/Blogs";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

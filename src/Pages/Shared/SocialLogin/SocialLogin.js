@@ -19,7 +19,6 @@ const SocialLogin = () => {
 
   useEffect(() => {
     if (user) {
-      console.log(user);
       navigate(from, { replace: true });
     }
   }, [user, navigate, from]);
