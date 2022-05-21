@@ -1,10 +1,13 @@
 import React from "react";
 import Footer from "../Shared/Footer/Footer";
+import Banner from "./Banner";
+import Summary from "./Summary";
 
 const Home = () => {
   return (
     <div>
-      <h2>Home</h2>
+      <Banner></Banner>
+      <Summary></Summary>
       <Footer></Footer>
     </div>
   );
