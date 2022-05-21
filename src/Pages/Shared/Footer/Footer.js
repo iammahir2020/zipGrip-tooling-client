@@ -10,7 +10,7 @@ import {
 import {
   faPhone,
   faLocationPin,
-  faLink,
+  faArrowRightFromBracket,
   faAt,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";

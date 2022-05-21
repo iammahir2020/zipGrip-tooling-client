@@ -33,7 +33,7 @@ const Navbar = () => {
 
           <div className="dropdown dropdown-end w-52">
             <label tabIndex="0" className="btn btn-accent w-full">
-              {user?.displayName}
+              {user?.displayName || "User"}
             </label>
             <ul
               tabIndex="0"
@@ -59,7 +59,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar max-w-7xl mx-auto drop-shadow-2xl">
+    <div className="navbar max-w-7xl mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">

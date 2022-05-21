@@ -9,6 +9,13 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowRightToBracket,
+  faKey,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
+import background from "../../images/background/bg.jpg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -59,17 +66,25 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        background: `url(${background})`,
+      }}
+    >
       <div className="py-20 px-2">
-        <div className="card lg:max-w-md shadow-2xl mx-auto bg-white">
+        <div className="card lg:max-w-md border-t-4 shadow-2xl mx-auto bg-white">
           <div className="card-body">
-            <h2 className="text-center text-2xl font-semibold mb-8">
-              Please Login
+            <h2 className="text-center text-2xl font-semibold mb-4">
+              <span className="mr-2">Login</span>
+              <FontAwesomeIcon icon={faArrowRightToBracket} />
             </h2>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control w-full max-w-md">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text font-medium">
+                    <FontAwesomeIcon className="mr-2" icon={faEnvelope} />
+                    Email
+                  </span>
                 </label>
                 <input
                   type="email"
@@ -102,7 +117,10 @@ const Login = () => {
               </div>
               <div className="form-control w-full max-w-md">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text font-medium">
+                    <FontAwesomeIcon className="mr-2" icon={faKey} />
+                    Password
+                  </span>
                 </label>
                 <input
                   type="password"
@@ -155,7 +173,7 @@ const Login = () => {
                 onClick={() => navigate("/register")}
                 className="link link-hover text-primary"
               >
-                Create new account
+                Please Register
               </span>
             </p>
             <div className="divider">OR</div>
