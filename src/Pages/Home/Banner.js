@@ -11,7 +11,8 @@ const Banner = () => {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
-      class="hero min-h-screen"
+      class="hero min-h-[500px]"
+      // class="hero min-h-screen"
     >
       <div class="hero-overlay bg-opacity-80"></div>
       <div class="hero-content text-center text-white">
