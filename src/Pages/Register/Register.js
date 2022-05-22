@@ -43,10 +43,9 @@ const Register = () => {
 
   if (createError || updateError) {
     errorMessage = (
-      <p className="text-red-500">
-        {createError?.message}
-        {updateError?.message}
-      </p>
+      <>
+        <p className="text-red-500">{createError?.message}</p>
+      </>
     );
   }
 

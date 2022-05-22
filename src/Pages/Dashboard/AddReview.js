@@ -6,10 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const AddReview = () => {
   const [user, loading, error] = useAuthState(auth);
   const [rating, setRating] = useState(0);
+  const navigate = useNavigate();
   const changeRating = (newRating) => {
     setRating(newRating);
   };
@@ -22,19 +25,47 @@ const AddReview = () => {
       comment: event.target.review.value,
       rating: rating,
     };
-    console.log(review);
-    const { data } = await axios.post("http://localhost:5000/review", review);
-    console.log("data", data);
-    if (data.acknowledged === true) {
-      await Swal.fire({
-        title: "Success!",
-        text: "Your Review has been Sent!",
-        icon: "success",
-        confirmButtonText: "Proceed",
-      });
-      event.target.reset();
-      setRating(0);
-    }
+    // console.log(review);
+    fetch("http://localhost:5000/review", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      },
+      body: JSON.stringify(review),
+    }).then((res) => {
+      // console.log("res", res);
+      if (res.status === 403 || res.status === 401) {
+        signOut(auth);
+        localStorage.removeItem("jwtToken");
+        navigate("/login");
+      }
+      if (res.status === 200) {
+        Swal.fire({
+          title: "Success!",
+          text: "Your Review has been Sent!",
+          icon: "success",
+          confirmButtonText: "Proceed",
+        });
+        event.target.reset();
+        setRating(0);
+      }
+    });
+    // if (res.data.acknowledged === true) {
+    //   await Swal.fire({
+    //     title: "Success!",
+    //     text: "Your Review has been Sent!",
+    //     icon: "success",
+    //     confirmButtonText: "Proceed",
+    //   });
+    //   event.target.reset();
+    //   setRating(0);
+    // }
+    // if (res.status === 403 || res.status === 401) {
+    //   signOut(auth);
+    //   localStorage.removeItem("jwtToken");
+    //   navigate("/login");
+    // }
   };
   return (
     <div>
@@ -62,7 +93,7 @@ const AddReview = () => {
                 type="text"
                 name="title"
                 id="title"
-                class="input-bordered input w-full max-w-lg"
+                className="input-bordered input w-full max-w-lg"
                 required
               />
             </div>
@@ -70,7 +101,7 @@ const AddReview = () => {
               <h2 className="text-lg my-3">Write Review</h2>
               <textarea
                 type="text"
-                class="input-bordered input w-full max-w-lg h-32"
+                className="input-bordered input w-full max-w-lg h-32"
                 name="review"
                 id="review"
                 required
@@ -85,7 +116,7 @@ const AddReview = () => {
             <div className="review-btn">
               <input
                 type="submit"
-                class="btn bg-gradient-to-r from-secondary to-primary text-white w-full max-w-lg"
+                className="btn bg-gradient-to-r from-secondary to-primary text-white w-full max-w-lg"
                 value="Send"
               />
             </div>

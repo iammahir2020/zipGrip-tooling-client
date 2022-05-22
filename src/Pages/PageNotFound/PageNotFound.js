@@ -12,26 +12,26 @@ const PageNotFound = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-        class="hero min-h-screen"
+        className="hero min-h-screen"
       >
-        <div class="hero-overlay bg-opacity-80"></div>
-        <div class="hero-content text-center text-neutral bg-white mx-4 lg:mx-0 lg:p-24 rounded-xl">
-          <div class="max-w-md">
-            <h1 class="mb-5 text-7xl lg:text-9xl bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary font-bold">
+        <div className="hero-overlay bg-opacity-80"></div>
+        <div className="hero-content text-center text-neutral bg-white mx-4 lg:mx-0 lg:p-24 rounded-xl">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-7xl lg:text-9xl bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary font-bold">
               404
             </h1>
-            <p class="mb-5 text-lg lg:text-xl">
+            <p className="mb-5 text-lg lg:text-xl">
               Sorry the page you are looking for might have been removed, had
               its name changed or is temporarily unavailable. If you think
               something is broken, report a probelm.
             </p>
             <button
               onClick={() => navigate("/")}
-              class="btn bg-gradient-to-r from-secondary to-primary w-52 text-white"
+              className="btn bg-gradient-to-r from-secondary to-primary w-52 text-white"
             >
               RETURN HOME
             </button>
-            <button class="mt-3 lg:mt-0 lg:ml-3 btn btn-outline bg-white w-52 text-primary">
+            <button className="mt-3 lg:mt-0 lg:ml-3 btn btn-outline bg-white w-52 text-primary">
               REPORT PROBLEM
             </button>
           </div>

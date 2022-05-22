@@ -2,8 +2,13 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
   return (
     <div className="drawer drawer-mobile max-w-7xl mx-auto">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
@@ -26,15 +31,22 @@ const Dashboard = () => {
           <li className="my-1">
             <NavLink to="/dashboard">My Profile</NavLink>
           </li>
-          <li className="my-1">
-            <NavLink to="/dashboard/myOrders">My Orders</NavLink>
-          </li>
-          <li className="my-1">
-            <NavLink to="/dashboard/addReview">Add a Review</NavLink>
-          </li>
-          <li className="my-1">
-            <NavLink to="/dashboard/makeAdmin">Make Admin</NavLink>
-          </li>
+          {!admin ? (
+            <>
+              <li className="my-1">
+                <NavLink to="/dashboard/myOrders">My Orders</NavLink>
+              </li>
+              <li className="my-1">
+                <NavLink to="/dashboard/addReview">Add a Review</NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="my-1">
+                <NavLink to="/dashboard/makeAdmin">Make Admin</NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>
