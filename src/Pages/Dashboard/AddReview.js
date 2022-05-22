@@ -5,6 +5,7 @@ import auth from "../../firebase.init";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const AddReview = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -22,27 +23,18 @@ const AddReview = () => {
       rating: rating,
     };
     console.log(review);
-    fetch(`http://localhost:5000/review`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(review),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.acknowledged === true) {
-          event.target.reset();
-          setRating(0);
-          Swal.fire({
-            title: "Success!",
-            text: "Your Review has been Sent!",
-            icon: "success",
-            confirmButtonText: "Proceed",
-          });
-        }
+    const { data } = await axios.post("http://localhost:5000/review", review);
+    console.log("data", data);
+    if (data.acknowledged === true) {
+      await Swal.fire({
+        title: "Success!",
+        text: "Your Review has been Sent!",
+        icon: "success",
+        confirmButtonText: "Proceed",
       });
+      event.target.reset();
+      setRating(0);
+    }
   };
   return (
     <div>

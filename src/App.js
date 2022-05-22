@@ -16,6 +16,7 @@ import "aos/dist/aos.css";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import AddReview from "./Pages/Dashboard/AddReview";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
 
 function App() {
   AOS.init();
@@ -37,6 +38,7 @@ function App() {
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path="myOrders" element={<MyOrders></MyOrders>}></Route>
           <Route path="addReview" element={<AddReview></AddReview>}></Route>
+          <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
         </Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
