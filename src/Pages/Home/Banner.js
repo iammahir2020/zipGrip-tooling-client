@@ -1,9 +1,6 @@
 import React from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const Banner = () => {
-  AOS.init();
   return (
     <div
       style={{
@@ -16,13 +13,17 @@ const Banner = () => {
     >
       <div class="hero-overlay bg-opacity-80"></div>
       <div class="hero-content text-center text-white">
-        <div data-aos="fade-up" data-aos-duration="1000" class="max-w-md">
+        <div
+          data-aos="zoom-in lg:fade-up"
+          data-aos-duration="1000"
+          class="max-w-md"
+        >
           <h1 class=" text-2xl font-semibold">Welcome to</h1>
           <h1 class="mb-5 text-5xl font-bold">ZipGrip Tooling</h1>
           <p class="mb-5">
-            At ZipGrip tooling we are striving at building tools that you can
-            rely on and keep as you partner for years. Our products are all ISO
-            Certified and Military Grade tested
+            At ZipGrip Tooling, we strive to provide tools that you can rely on
+            and keep as a partner for many years. Our products have all been ISO
+            certified and tested to military standards.
           </p>
           <button class="btn btn-primary w-52 text-white">Get Started</button>
         </div>

@@ -11,11 +11,8 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 // import { faStar } from "@fortawesome/free-regular-svg-icons";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const Summary = () => {
-  AOS.init();
   return (
     <div className="bg-primary">
       <div className="my-10 py-20 lg:py-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between items-center gap-10 lg:gap-0">

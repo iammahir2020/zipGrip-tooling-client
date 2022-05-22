@@ -62,7 +62,11 @@ const Register = () => {
       }}
     >
       <div className="py-20 px-2">
-        <div className="card lg:max-w-md border-t-4 shadow-xl mx-auto bg-white">
+        <div
+          data-aos="zoom-in lg:fade-up"
+          data-aos-duration="1000"
+          className="card lg:max-w-md border-t-4 shadow-xl mx-auto bg-white"
+        >
           <div className="card-body">
             <h2 className="text-center text-2xl font-semibold mb-4">
               <span className="mr-2">Register</span>
