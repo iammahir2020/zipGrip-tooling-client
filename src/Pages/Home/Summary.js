@@ -8,8 +8,8 @@ import {
   faMapLocation,
   faAward,
   faPeopleGroup,
-  faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -22,28 +22,28 @@ const Summary = () => {
           <FontAwesomeIcon className="text-7xl" icon={faMapLocation} />
           <div class="card-body items-center text-center">
             <p className="text-4xl font-bold">10+</p>
-            <h2 class="card-title">Countries</h2>
+            <h2 class="font-medium">Countries</h2>
           </div>
         </div>
         <div data-aos="zoom-in" class="card bg-accent">
           <FontAwesomeIcon className="text-7xl" icon={faAward} />
           <div class="card-body items-center text-center">
             <p className="text-4xl font-bold">ISO 9001:2015</p>
-            <h2 class="card-title">ISO Certified</h2>
+            <h2 class="font-medium">ISO Certified</h2>
           </div>
         </div>
         <div data-aos="zoom-in" class="card bg-accent">
           <FontAwesomeIcon className="text-7xl" icon={faPeopleGroup} />
           <div class="card-body items-center text-center">
             <p className="text-4xl font-bold">120+</p>
-            <h2 class="card-title">Happy Clients</h2>
+            <h2 class="font-medium">Happy Clients</h2>
           </div>
         </div>
         <div data-aos="zoom-in" class="card bg-accent">
           <FontAwesomeIcon className="text-7xl" icon={faStar} />
           <div class="card-body items-center text-center">
             <p className="text-4xl font-bold">300+</p>
-            <h2 className="card-title">Positive Reviews</h2>
+            <h2 className="font-medium">Positive Reviews</h2>
           </div>
         </div>
       </div>

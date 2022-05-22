@@ -13,7 +13,7 @@ const Banner = () => {
       }}
       class="hero min-h-screen"
     >
-      <div class="hero-overlay bg-opacity-70"></div>
+      <div class="hero-overlay bg-opacity-80"></div>
       <div class="hero-content text-center text-white">
         <div data-aos="fade-up" data-aos-duration="1000" class="max-w-md">
           <h1 class=" text-2xl font-semibold">Welcome to</h1>
