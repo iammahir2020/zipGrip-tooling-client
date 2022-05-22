@@ -16,6 +16,7 @@ import {
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import background from "../../images/background/bg.jpg";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,15 +28,16 @@ const Login = () => {
     useSendPasswordResetEmail(auth);
 
   const [email, setEmail] = useState("");
+  const [token] = useToken(user);
 
   let errorMessage;
   let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [token, navigate, from]);
 
   const {
     register,

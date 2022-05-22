@@ -3,12 +3,14 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import useToken from "../../../Hooks/useToken";
 
 const SocialLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [token] = useToken(user);
 
   const handleGoogleSignin = () => {
     signInWithGoogle();
@@ -18,10 +20,10 @@ const SocialLogin = () => {
   let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [token, navigate, from]);
 
   if (error) {
     errorMessage = <p className="text-red-500">{error?.message}</p>;

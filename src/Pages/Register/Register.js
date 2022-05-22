@@ -16,6 +16,7 @@ import {
   faFileSignature,
 } from "@fortawesome/free-solid-svg-icons";
 import background from "../../images/background/bg.jpg";
+import useToken from "../../Hooks/useToken";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -24,15 +25,15 @@ const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, createError] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
+  const [token] = useToken(user);
   let errorMessage;
   let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [token, navigate, from]);
 
   const {
     register,
