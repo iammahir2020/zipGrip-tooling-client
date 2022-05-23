@@ -6,10 +6,15 @@ import auth from "../../../firebase.init";
 import logo from "../../../images/logo/zipgripLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import Loading from "../Loading/Loading";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [user, loading, error] = useAuthState(auth);
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   const handleSignOut = () => {
     signOut(auth);

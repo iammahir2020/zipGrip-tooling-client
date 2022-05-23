@@ -28,7 +28,7 @@ const AllReviews = () => {
         )}
         <input
           type="checkbox"
-          class="toggle toggle-lg"
+          className="toggle toggle-lg"
           onChange={() => setToggle(!toggle)}
         />
       </div>

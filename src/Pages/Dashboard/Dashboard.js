@@ -19,7 +19,7 @@ const Dashboard = () => {
     <div className="drawer drawer-mobile max-w-7xl mx-auto">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content px-6 lg:my-6">
-        <div className="flex justify-between items-center">
+        <div className="flex items-center">
           <label
             tabIndex="0"
             htmlFor="dashboard-sidebar"
@@ -27,7 +27,9 @@ const Dashboard = () => {
           >
             <FontAwesomeIcon icon={faArrowRightFromBracket} />
           </label>
-          <h2 className="text-3xl font-bold">Dashboard</h2>
+          <h2 className="text-3xl font-bold border-b-4 border-primary lg:border-0">
+            Dashboard
+          </h2>
         </div>
         <Outlet></Outlet>
       </div>
