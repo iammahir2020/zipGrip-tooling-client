@@ -11,11 +11,14 @@ import {
   faSchool,
   faLocationDot,
   faPhone,
+  faArrowUpFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import Updating from "../Shared/Updating/Updating";
 
 const MyProfile = () => {
   const [editProfile, setEditProfile] = useState(false);
+  const [updateLoading, setUpdateLoading] = useState(false);
   const [user, loading, error] = useAuthState(auth);
   const {
     data: profileUser,
@@ -34,6 +37,62 @@ const MyProfile = () => {
     return <Loading></Loading>;
   }
 
+  if (updateLoading) {
+    return <Updating></Updating>;
+  }
+
+  const imgbbAPIkey = "18a71459c4944f29646f860968c71813";
+
+  const handleUpdatedp = (event) => {
+    setUpdateLoading(true);
+    event.preventDefault();
+    const profilePicture = event.target.image.files[0];
+    console.log(profilePicture);
+    const fileExtension = profilePicture?.name?.split(".")[1];
+    console.log(fileExtension);
+    const formData = new FormData();
+    formData.append("image", profilePicture);
+    const url = `https://api.imgbb.com/1/upload?key=${imgbbAPIkey}`;
+    try {
+      fetch(url, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+          if (result.success) {
+            const img = result.data.url;
+            fetch(
+              `https://zipgrip-tooling.herokuapp.com/profilePicture/${user.email}`,
+              {
+                method: "PUT",
+                headers: {
+                  "content-type": "application/json",
+                  authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+                },
+                body: JSON.stringify({ profilePicture: img }),
+              }
+            )
+              .then((res) => res.json())
+              .then((acknowledged) => {
+                if (acknowledged) {
+                  setUpdateLoading(false);
+                  Swal.fire(
+                    "Success",
+                    "Your Profile Picture has been updated!",
+                    "success"
+                  );
+                  refetch();
+                }
+              });
+          }
+        });
+    } finally {
+      setEditProfile(!editProfile);
+    }
+  };
+
   const handleEditProfile = (event) => {
     event.preventDefault();
     const profile = {
@@ -44,7 +103,7 @@ const MyProfile = () => {
       number: event.target.number.value,
       linkedIn: event.target.linkedIn.value,
     };
-    // console.log(profile);
+    console.log(profile);
     fetch(`https://zipgrip-tooling.herokuapp.com/profile/${user.email}`, {
       method: "PUT",
       headers: {
@@ -70,12 +129,23 @@ const MyProfile = () => {
       </h2>
       <div className="flex flex-col lg:flex-row justify-between gap-5">
         <div
-          class={`card w-full max-w-lg bg-base-100 shadow-xl ${
+          className={`card w-full max-w-lg bg-base-100 shadow-xl ${
             editProfile && "blur-sm"
           }`}
         >
-          <div class="card-body">
-            <h2 class="card-title">{user.displayName}</h2>
+          <div className="card-body">
+            <div className="avatar">
+              <div className="w-32 rounded">
+                <img
+                  src={
+                    profileUser?.profilePicture ||
+                    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                  }
+                  alt="PP"
+                />
+              </div>
+            </div>
+            <h2 className="card-title">{user.displayName}</h2>
             <p>
               <FontAwesomeIcon className="mr-2" icon={faEnvelope} />
               <span>Email: {user.email}</span>
@@ -105,10 +175,10 @@ const MyProfile = () => {
                 </a>
               </span>
             </p>
-            <div class="card-actions justify-end">
+            <div className="card-actions justify-end">
               <button
                 onClick={() => setEditProfile(!editProfile)}
-                class={`btn bg-gradient-to-r from-secondary to-primary text-white ${
+                className={`btn bg-gradient-to-r from-secondary to-primary text-white ${
                   editProfile && "hidden"
                 }`}
               >
@@ -121,6 +191,7 @@ const MyProfile = () => {
           <div className="card w-full max-w-lg bg-base-100 shadow-xl">
             <div className="card-body">
               <div>
+                <p className="my-4 text-center">Upload Profile Information</p>
                 <form onSubmit={handleEditProfile}>
                   <div className="form-control w-full max-w-lg mb-2">
                     <label className="label lg:hidden ">
@@ -235,11 +306,36 @@ const MyProfile = () => {
                       />
                     </label>
                   </div>
+
                   <div className="card-actions justify-end">
                     <input
                       className="btn bg-gradient-to-r from-secondary to-primary text-white my-3"
                       type="submit"
-                      value="Update"
+                      value="Update Info"
+                    />
+                  </div>
+                </form>
+                <p className="my-4 text-center">Upload Profile Picture</p>
+                <form onSubmit={handleUpdatedp}>
+                  <div className="flex justify-between items-center w-full max-w-lg mb-2">
+                    <label className="flex justify-center items-center bg-gray-200 p-2 rounded-lg hover:cursor-pointer">
+                      <input
+                        className="hidden"
+                        id="image"
+                        name="image"
+                        type="file"
+                        accept="image/png, image/jpeg,image/jpg"
+                      />
+                      <span>Choose Image</span>
+                      <FontAwesomeIcon
+                        className="ml-2"
+                        icon={faArrowUpFromBracket}
+                      />
+                    </label>
+                    <input
+                      className="btn bg-gradient-to-r from-secondary to-primary text-white my-3"
+                      type="submit"
+                      value="Update Photo"
                     />
                   </div>
                 </form>
