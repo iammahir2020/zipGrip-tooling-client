@@ -7,7 +7,9 @@ const AllReviews = () => {
   const [toggle, setToggle] = useState(false);
 
   const { data: reviews, isLoading } = useQuery(["reviews"], () =>
-    fetch("http://localhost:5000/review").then((res) => res.json())
+    fetch("https://zipgrip-tooling.herokuapp.com/review").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {

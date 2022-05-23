@@ -5,10 +5,16 @@ import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import useAdmin from "../../Hooks/useAdmin";
+import Loading from "../Shared/Loading/Loading";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
-  const [admin] = useAdmin(user);
+  const [admin, adminLoading] = useAdmin(user);
+
+  if (adminLoading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="drawer drawer-mobile max-w-7xl mx-auto">
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />

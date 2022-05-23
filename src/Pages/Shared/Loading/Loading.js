@@ -2,12 +2,8 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="h-screen flex items-center justify-center space-x-4 animate-pulse">
-      <div className="w-8 h-8 bg-blue-400 rounded-full"></div>
-      <div className="w-8 h-8 bg-blue-400 rounded-full"></div>
-      <div className="w-8 h-8 bg-blue-400 rounded-full"></div>
-      <div className="w-8 h-8 bg-blue-400 rounded-full"></div>
-      <div className="w-8 h-8 bg-blue-400 rounded-full"></div>
+    <div className="h-screen flex items-center justify-center">
+      <div className="border-t-transparent w-20 h-20 border-4 border-blue-900 border-solid rounded-full animate-spin"></div>
     </div>
   );
 };

@@ -26,7 +26,7 @@ const AddReview = () => {
       rating: rating,
     };
     // console.log(review);
-    fetch("http://localhost:5000/review", {
+    fetch("https://zipgrip-tooling.herokuapp.com/review", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

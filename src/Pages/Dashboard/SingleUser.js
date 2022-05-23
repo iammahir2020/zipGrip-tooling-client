@@ -8,14 +8,14 @@ const SingleUser = ({ user, index, refetch }) => {
   const { position, email } = user;
 
   const handleMakeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://zipgrip-tooling.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
       },
     })
       .then((res) => {
-        if (res.status === 403) {
+        if (res.status === 403 || res.status === 401) {
           toast.error("Failed to make an admin");
         }
         return res.json();
@@ -38,7 +38,7 @@ const SingleUser = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Remove!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://zipgrip-tooling.herokuapp.com/user/${email}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

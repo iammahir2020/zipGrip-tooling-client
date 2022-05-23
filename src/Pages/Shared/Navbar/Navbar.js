@@ -4,6 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import auth from "../../../firebase.init";
 import logo from "../../../images/logo/zipgripLogo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -31,24 +33,26 @@ const Navbar = () => {
             <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
 
-          <div className="dropdown dropdown-end w-52">
-            <label tabIndex="0" className="btn btn-accent w-full">
+          <li tabIndex="0" className="w-52 lg:w-72 justify-end">
+            <a className="justify-between underline underline-offset-8">
               {user?.displayName || "User"}
-            </label>
-            <ul
-              tabIndex="0"
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
+              <FontAwesomeIcon className="hidden lg:block" icon={faAngleDown} />
+              <FontAwesomeIcon
+                className="block lg:hidden"
+                icon={faAngleRight}
+              />
+            </a>
+            <ul className="p-2 w-30">
               <li>
                 <button
                   onClick={handleSignOut}
-                  className="btn btn-outline btn-primary w-full"
+                  className="btn btn-primary w-full text-white"
                 >
                   Logout
                 </button>
               </li>
             </ul>
-          </div>
+          </li>
         </>
       ) : (
         <li className="lg:mr-3">
