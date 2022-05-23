@@ -13,11 +13,7 @@ const Banner = () => {
     >
       <div className="hero-overlay bg-opacity-80"></div>
       <div className="hero-content text-center text-white">
-        <div
-          data-aos="zoom-in lg:fade-up"
-          data-aos-duration="1000"
-          className="max-w-md"
-        >
+        <div className="max-w-md">
           <h1 className=" text-2xl font-semibold">Welcome to</h1>
           <h1 className="mb-5 text-5xl font-bold">ZipGrip Tooling</h1>
           <p className="mb-5">

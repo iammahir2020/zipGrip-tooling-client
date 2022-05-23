@@ -69,7 +69,11 @@ const MyProfile = () => {
         My Profile
       </h2>
       <div className="flex flex-col lg:flex-row justify-between gap-5">
-        <div class="card w-full max-w-lg bg-base-100 shadow-xl">
+        <div
+          class={`card w-full max-w-lg bg-base-100 shadow-xl ${
+            editProfile && "blur-sm"
+          }`}
+        >
           <div class="card-body">
             <h2 class="card-title">{user.displayName}</h2>
             <p>
