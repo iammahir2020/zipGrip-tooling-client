@@ -12,6 +12,7 @@ import {
   faLocationDot,
   faPhone,
   faArrowUpFromBracket,
+  faXmarkCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import Updating from "../Shared/Updating/Updating";
@@ -47,50 +48,54 @@ const MyProfile = () => {
     setUpdateLoading(true);
     event.preventDefault();
     const profilePicture = event.target.image.files[0];
-    console.log(profilePicture);
-    const fileExtension = profilePicture?.name?.split(".")[1];
-    console.log(fileExtension);
+    // console.log("profilePicture", profilePicture);
+    if (!profilePicture) {
+      setUpdateLoading(false);
+      Swal.fire("Error", "Please Choose a Photo", "error");
+      // setEditProfile(!editProfile);
+      return;
+    }
     const formData = new FormData();
     formData.append("image", profilePicture);
     const url = `https://api.imgbb.com/1/upload?key=${imgbbAPIkey}`;
-    try {
-      fetch(url, {
-        method: "POST",
-        body: formData,
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result);
-          if (result.success) {
-            const img = result.data.url;
-            fetch(
-              `https://zipgrip-tooling.herokuapp.com/profilePicture/${user.email}`,
-              {
-                method: "PUT",
-                headers: {
-                  "content-type": "application/json",
-                  authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-                },
-                body: JSON.stringify({ profilePicture: img }),
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        // console.log(result);
+        if (result.success) {
+          const img = result.data.url;
+          fetch(
+            `https://zipgrip-tooling.herokuapp.com/profilePicture/${user.email}`,
+            {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+              },
+              body: JSON.stringify({ profilePicture: img }),
+            }
+          )
+            .then((res) => {
+              // console.log(res);
+              return res.json();
+            })
+            .then((acknowledged) => {
+              if (acknowledged) {
+                Swal.fire(
+                  "Success",
+                  "Your Profile Picture has been updated!",
+                  "success"
+                );
+                setUpdateLoading(false);
+                setEditProfile(!editProfile);
+                refetch();
               }
-            )
-              .then((res) => res.json())
-              .then((acknowledged) => {
-                if (acknowledged) {
-                  setUpdateLoading(false);
-                  Swal.fire(
-                    "Success",
-                    "Your Profile Picture has been updated!",
-                    "success"
-                  );
-                  refetch();
-                }
-              });
-          }
-        });
-    } finally {
-      setEditProfile(!editProfile);
-    }
+            });
+        }
+      });
   };
 
   const handleEditProfile = (event) => {
@@ -103,7 +108,7 @@ const MyProfile = () => {
       number: event.target.number.value,
       linkedIn: event.target.linkedIn.value,
     };
-    console.log(profile);
+    // console.log(profile);
     fetch(`https://zipgrip-tooling.herokuapp.com/profile/${user.email}`, {
       method: "PUT",
       headers: {
@@ -116,6 +121,36 @@ const MyProfile = () => {
       .then((acknowledged) => {
         if (acknowledged) {
           Swal.fire("Success", "Your Profile has been updated!", "success");
+          setEditProfile(!editProfile);
+          refetch();
+        }
+      });
+  };
+
+  const handleRemoveDp = () => {
+    setUpdateLoading(true);
+    fetch(
+      `https://zipgrip-tooling.herokuapp.com/profilePicture/${user.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+        },
+        body: JSON.stringify({
+          profilePicture:
+            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+        }),
+      }
+    )
+      .then((res) => {
+        // console.log(res);
+        return res.json();
+      })
+      .then((acknowledged) => {
+        if (acknowledged) {
+          Swal.fire("Success", "Profile Picture Removed!", "success");
+          setUpdateLoading(false);
           setEditProfile(!editProfile);
           refetch();
         }
@@ -165,7 +200,7 @@ const MyProfile = () => {
             <p>
               <FontAwesomeIcon className="mr-2" icon={faLinkedin} />
               <span>
-                LinkedIn Profile:{" "}
+                LinkedIn:{" "}
                 <a
                   href={profileUser?.linkedIn}
                   rel="noreferrer"
@@ -190,6 +225,15 @@ const MyProfile = () => {
         {editProfile && (
           <div className="card w-full max-w-lg bg-base-100 shadow-xl">
             <div className="card-body">
+              <div className="flex justify-end">
+                <span>
+                  <FontAwesomeIcon
+                    onClick={() => setEditProfile(!editProfile)}
+                    className="text-2xl text-red-500 hover:cursor-pointer"
+                    icon={faXmarkCircle}
+                  />
+                </span>
+              </div>
               <div>
                 <p className="my-4 text-center">Upload Profile Information</p>
                 <form onSubmit={handleEditProfile}>
@@ -317,7 +361,7 @@ const MyProfile = () => {
                 </form>
                 <p className="my-4 text-center">Upload Profile Picture</p>
                 <form onSubmit={handleUpdatedp}>
-                  <div className="flex justify-between items-center w-full max-w-lg mb-2">
+                  <div className="flex flex-col lg:flex-row justify-between items-center w-full max-w-lg mb-2">
                     <label className="flex justify-center items-center bg-gray-200 p-2 rounded-lg hover:cursor-pointer">
                       <input
                         className="hidden"
@@ -326,7 +370,7 @@ const MyProfile = () => {
                         type="file"
                         accept="image/png, image/jpeg,image/jpg"
                       />
-                      <span>Choose Image</span>
+                      <span>Choose</span>
                       <FontAwesomeIcon
                         className="ml-2"
                         icon={faArrowUpFromBracket}
@@ -335,10 +379,15 @@ const MyProfile = () => {
                     <input
                       className="btn bg-gradient-to-r from-secondary to-primary text-white my-3"
                       type="submit"
-                      value="Update Photo"
+                      value="Update  Photo"
                     />
                   </div>
                 </form>
+                <div className="flex justify-center lg:justify-end">
+                  <button onClick={handleRemoveDp} className="btn btn-error">
+                    Remove Photo
+                  </button>
+                </div>
               </div>
             </div>
           </div>
