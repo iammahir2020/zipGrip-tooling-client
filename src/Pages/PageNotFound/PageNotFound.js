@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Shared/Footer/Footer";
+import bg from "../../images/background/banner_bg1.jpg";
 
 const PageNotFound = () => {
   const navigate = useNavigate();
@@ -8,14 +9,13 @@ const PageNotFound = () => {
     <div>
       <div
         style={{
-          background: `url(https://previews.123rf.com/images/serezniy/serezniy1811/serezniy181146130/112715442-different-electrical-tools-on-grey-background.jpg?fj=1)`,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          background: `url(${bg})`,
+          backgroundSize: "100%",
         }}
-        className="hero min-h-screen"
+        className="hero min-h-[500px]"
       >
         <div className="hero-overlay bg-opacity-80"></div>
-        <div className="hero-content text-center text-neutral bg-white mx-4 lg:mx-0 lg:p-24 rounded-xl">
+        <div className="hero-content text-center text-white">
           <div className="max-w-md">
             <h1 className="mb-5 text-7xl lg:text-9xl bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary font-bold">
               404

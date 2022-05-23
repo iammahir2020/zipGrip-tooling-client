@@ -71,14 +71,11 @@ const Login = () => {
     <div
       style={{
         background: `url(${background})`,
+        backgroundSize: "100%",
       }}
     >
       <div className="py-20 px-2">
-        <div
-          data-aos="zoom-in lg:fade-up"
-          data-aos-duration="1000"
-          className="card lg:max-w-md border-t-4 shadow-2xl mx-auto bg-white"
-        >
+        <div className="card lg:max-w-md border-t-4 shadow-2xl mx-auto bg-white">
           <div className="card-body">
             <h2 className="text-center text-2xl font-semibold mb-4">
               <span className="mr-2">Login</span>
