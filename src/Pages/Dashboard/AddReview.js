@@ -55,11 +55,11 @@ const AddReview = () => {
         Add a Review
       </h2>
       <div className="my-10 flex flex-col justify-center items-center">
-        <div class="card w-full max-w-lg bg-base-100 shadow-xl">
-          <div class="card-body">
+        <div className="card w-full max-w-lg bg-base-100 shadow-xl">
+          <div className="card-body">
             <form onSubmit={handleAddReview}>
               <div className="mb-3">
-                <h2 class="card-title">Rate Your Experience!</h2>
+                <h2 className="card-title">Rate Your Experience!</h2>
                 <Rating
                   initialRating={rating}
                   emptySymbol={
@@ -77,7 +77,7 @@ const AddReview = () => {
                 ></Rating>
               </div>
               <div className=" mb-3">
-                <h2 class="card-title">Review Title</h2>
+                <h2 className="card-title">Review Title</h2>
                 <input
                   type="text"
                   name="title"
@@ -87,7 +87,7 @@ const AddReview = () => {
                 />
               </div>
               <div className=" mb-3">
-                <h2 class="card-title">Write Review</h2>
+                <h2 className="card-title">Write Review</h2>
                 <textarea
                   type="text"
                   className="input-bordered input w-full max-w-lg h-32"
