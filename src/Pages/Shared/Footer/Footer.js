@@ -47,7 +47,9 @@ const Footer = () => {
             <span className="footer-title">
               <FontAwesomeIcon icon={faPhone} /> <span> Contact</span>
             </span>
-            <p>+509-267-1042</p>
+            <p>
+              <a href="tel:{+509-267-1042}">+509-267-1042</a>
+            </p>
           </div>
           <div>
             <span className="footer-title">

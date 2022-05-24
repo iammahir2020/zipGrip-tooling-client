@@ -170,7 +170,7 @@ const MyProfile = () => {
         >
           <div className="card-body">
             <div className="avatar">
-              <div className="w-32 rounded">
+              <div className="w-32 rounded-xl">
                 <img
                   src={
                     profileUser?.profilePicture ||
@@ -204,7 +204,7 @@ const MyProfile = () => {
                 <a
                   href={profileUser?.linkedIn}
                   rel="noreferrer"
-                  target="_blank"
+                  target={"_blank"}
                 >
                   {profileUser?.linkedIn}
                 </a>

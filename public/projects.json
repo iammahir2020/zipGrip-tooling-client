@@ -1,0 +1,52 @@
+[
+    {
+        "_id":1,
+        "name":"Tech Archive",
+        "type":"Inventory Management System",
+        "liveSite":"https://tech-archive.web.app/",
+        "gitClient":"https://github.com/iammahir2020/tech-archive-client",
+        "gitServer":"https://github.com/iammahir2020/tech-archive-server",
+        "features":
+        [
+            {
+                "_tid":1,
+                "name":"Users can add new items"
+            },
+            {
+                "_tid":2,
+                "name":"Manage specific Item Quantity"
+            },
+            {
+                "_tid":3,
+                "name":"Users can leave reviews on the site"
+            }
+        ],
+        "technologies":
+        [
+            {
+                "_uid":1,
+                "name":"React JS"
+            },
+            {
+                "_uid":2,
+                "name":"Node JS"
+            },
+            {
+                "_uid":3,
+                "name":"Express JS"
+            },
+            {
+                "_uid":4,
+                "name":"MongoDB"
+            },
+            {
+                "_uid":5,
+                "name":"Firebase"
+            },
+            {
+                "_uid":6,
+                "name":"Bootstrap"
+            }
+        ]
+    }
+]

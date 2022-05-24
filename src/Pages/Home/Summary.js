@@ -17,7 +17,6 @@ const Summary = () => {
     <div className="bg-primary">
       <div className="my-10 py-20 lg:py-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between items-center gap-10 lg:gap-0">
         <div data-aos="zoom-in" className="card bg-primary">
-          {/* <FontAwesomeIcon className="text-7xl" icon={faMapLocation} /> */}
           <figure className="w-24 mx-auto">
             <img src={flag} alt="flag" className="rounded-xl" />
           </figure>
@@ -28,7 +27,6 @@ const Summary = () => {
           </div>
         </div>
         <div data-aos="zoom-in" className="card bg-primary">
-          {/* <FontAwesomeIcon className="text-7xl" icon={faAward} /> */}
           <figure className="w-24 mx-auto">
             <img src={prize} alt="prize" className="rounded-xl" />
           </figure>
@@ -39,7 +37,6 @@ const Summary = () => {
           </div>
         </div>
         <div data-aos="zoom-in" className="card bg-primary">
-          {/* <FontAwesomeIcon className="text-7xl" icon={faPeopleGroup} /> */}
           <figure className="w-24 mx-auto">
             <img src={maintenance} alt="maintenance" className="rounded-xl" />
           </figure>
@@ -50,7 +47,6 @@ const Summary = () => {
           </div>
         </div>
         <div data-aos="zoom-in" className="card bg-primary">
-          {/* <FontAwesomeIcon className="text-7xl" icon={faStar} /> */}
           <figure className="w-24 mx-auto">
             <img src={map} alt="map" className="rounded-xl" />
           </figure>
