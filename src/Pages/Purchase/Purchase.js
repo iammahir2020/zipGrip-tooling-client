@@ -19,7 +19,7 @@ const Purchase = () => {
   const [adding, setAdding] = useState(false);
 
   const { data: product, isLoading } = useQuery(["singleProduct", id], () =>
-    fetch(`http://localhost:5000/product/singleProduct/${id}`, {
+    fetch(`https://zipgrip-tooling.herokuapp.com/product/singleProduct/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
@@ -30,18 +30,24 @@ const Purchase = () => {
   const handlePlaceOrder = (event) => {
     setAdding(true);
     event.preventDefault();
+
+    const amountToBePaid =
+      parseInt(event.target.quantity.value) * parseFloat(product.price);
+    // console.log(amountToBePaid);
+
     const order = {
       itemId: product._id,
       itemName: product.name,
       customerName: user.displayName,
       customerEmail: user.email,
       quantity: event.target.quantity.value,
+      amountToBePaid: amountToBePaid,
       customerAddress: event.target.address.value,
       customerNumber: event.target.number.value,
     };
     console.log(order);
 
-    fetch("http://localhost:5000/order", {
+    fetch("https://zipgrip-tooling.herokuapp.com/order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,9 +63,8 @@ const Purchase = () => {
       if (res.status === 200) {
         const remainingQuantity =
           parseInt(product.available) - parseInt(order.quantity);
-        console.log(remainingQuantity);
 
-        fetch(`http://localhost:5000/product/${product._id}`, {
+        fetch(`https://zipgrip-tooling.herokuapp.com/product/${product._id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

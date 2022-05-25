@@ -41,7 +41,7 @@ const AddProduct = () => {
             image: img,
           };
           console.log(product);
-          fetch("http://localhost:5000/product", {
+          fetch("https://zipgrip-tooling.herokuapp.com/product", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

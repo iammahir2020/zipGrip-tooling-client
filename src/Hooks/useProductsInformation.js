@@ -6,7 +6,7 @@ const useProductsInformation = () => {
     isLoading,
     refetch,
   } = useQuery(["allProducts"], () =>
-    fetch(`http://localhost:5000/product`, {
+    fetch(`https://zipgrip-tooling.herokuapp.com/product`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
