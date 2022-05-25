@@ -22,6 +22,7 @@ import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProduct from "./Pages/Dashboard/ManageProduct";
 import AllProductsPage from "./Pages/AllProducts/AllProductsPage";
 import Purchase from "./Pages/Purchase/Purchase";
+import Payment from "./Pages/Dashboard/Payment";
 
 function App() {
   AOS.init();
@@ -55,6 +56,7 @@ function App() {
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path="myOrders" element={<MyOrders></MyOrders>}></Route>
           <Route path="addReview" element={<AddReview></AddReview>}></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route
             path="makeAdmin"
             element={

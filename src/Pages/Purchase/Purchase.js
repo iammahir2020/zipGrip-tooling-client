@@ -44,6 +44,7 @@ const Purchase = () => {
       amountToBePaid: amountToBePaid,
       customerAddress: event.target.address.value,
       customerNumber: event.target.number.value,
+      status: "Unpaid",
     };
     console.log(order);
 

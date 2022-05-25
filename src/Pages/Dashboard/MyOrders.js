@@ -49,6 +49,7 @@ const MyOrders = () => {
                   Amount To <br />
                   be paid
                 </th>
+                <th>Status</th>
                 <th>Make Payment</th>
                 <th>Cancel Order</th>
               </tr>

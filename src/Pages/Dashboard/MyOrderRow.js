@@ -2,12 +2,15 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const MyOrderRow = ({ order, index, refetch }) => {
-  const { _id, itemName, quantity, paid, transectionID, amountToBePaid } =
+  const navigate = useNavigate();
+  const { _id, transactionId, itemName, quantity, amountToBePaid, status } =
     order;
   const handlePay = () => {
     console.log("handlePay");
+    navigate(`/dashboard/payment/${_id}`);
   };
   const handleCancelOrder = () => {
     Swal.fire({
@@ -46,7 +49,16 @@ const MyOrderRow = ({ order, index, refetch }) => {
       <td>{quantity}</td>
       <td>${amountToBePaid}</td>
       <td>
-        {!paid ? (
+        {/* {status==="unpaid" && <p className="text-red-500">UnPaid</p>}
+        {!shipped ? (
+          <p className="text-primary">Pending...</p>
+        ) : (
+          <p className="text-primary">Shipped</p>
+        )} */}
+        {status}
+      </td>
+      <td>
+        {status === "Unpaid" ? (
           <button onClick={handlePay} className="btn btn-sm btn-success">
             <span className="mr-3 hidden lg:block">Pay</span>
             <FontAwesomeIcon
@@ -57,12 +69,12 @@ const MyOrderRow = ({ order, index, refetch }) => {
         ) : (
           <>
             <p className="text-green-500">Paid</p>
-            <p className="text-green-500">{transectionID}</p>
+            <p className="text-green-500">{transactionId}</p>
           </>
         )}
       </td>
       <td>
-        {!paid && (
+        {status === "Unpaid" && (
           <button onClick={handleCancelOrder} className="btn btn-sm btn-error">
             <span className="mr-3 hidden lg:block">Cancel</span>
             <FontAwesomeIcon
