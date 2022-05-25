@@ -1,21 +1,11 @@
 import React from "react";
 import { useQuery } from "react-query";
+import useProductsInformation from "../../Hooks/useProductsInformation";
 import Loading from "../Shared/Loading/Loading";
 import SingleProduct from "./SingleProduct";
 
 const ManageProduct = () => {
-  const {
-    data: products,
-    refetch,
-    isLoading,
-  } = useQuery("products", () =>
-    fetch(`http://localhost:5000/product`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-      },
-    }).then((res) => res.json())
-  );
+  const [products, isLoading, refetch] = useProductsInformation();
 
   if (isLoading) {
     return <Loading></Loading>;
@@ -35,11 +25,20 @@ const ManageProduct = () => {
               <th></th>
               <th>Name</th>
               {/* <th>Update Stock</th> */}
-              <th>Remove Product</th>
+              <th>
+                Remove <br /> Product
+              </th>
               <th>Added By</th>
-              <th>Available Quantity</th>
-              <th>Minimum Order Quantity</th>
-              <th>Price Per Unit</th>
+              <th>
+                Available <br /> Quantity
+              </th>
+              <th>
+                Minimum <br /> Order Quantity
+              </th>
+              <th>
+                Price
+                <br /> Per Unit
+              </th>
             </tr>
           </thead>
           <tbody>

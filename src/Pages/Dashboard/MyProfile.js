@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useQuery } from "react-query";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading/Loading";
 import "./MyProfile.css";
@@ -16,25 +15,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import Updating from "../Shared/Updating/Updating";
+import useUserInformation from "../../Hooks/useUserInformation";
 
 const MyProfile = () => {
   const [editProfile, setEditProfile] = useState(false);
   const [updateLoading, setUpdateLoading] = useState(false);
   const [user, loading, error] = useAuthState(auth);
-  const {
-    data: profileUser,
-    isLoading,
-    refetch,
-  } = useQuery(["user", user.email], () =>
-    fetch(`https://zipgrip-tooling.herokuapp.com/profile/${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-      },
-    }).then((res) => res.json())
-  );
 
-  if (isLoading || loading) {
+  const [profileUser, isLoadingUser, refetch] = useUserInformation(user);
+
+  if (isLoadingUser || loading) {
     return <Loading></Loading>;
   }
 

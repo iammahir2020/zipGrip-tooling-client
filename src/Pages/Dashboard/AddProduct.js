@@ -62,8 +62,12 @@ const AddProduct = () => {
                 text: "Product Added",
                 icon: "success",
                 confirmButtonText: "Proceed",
+              }).then(async (result) => {
+                if (result.isConfirmed) {
+                  event.target.reset();
+                  navigate("/dashboard/manageProduct");
+                }
               });
-              event.target.reset();
             }
           });
         }
