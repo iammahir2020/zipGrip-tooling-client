@@ -18,6 +18,7 @@ import MyOrders from "./Pages/Dashboard/MyOrders";
 import AddReview from "./Pages/Dashboard/AddReview";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
 import RequireAdmin from "./Authentication/RequireAdmin";
+import AddIProduct from "./Pages/Dashboard/AddIProduct";
 
 function App() {
   AOS.init();
@@ -44,6 +45,14 @@ function App() {
             element={
               <RequireAdmin>
                 <MakeAdmin></MakeAdmin>
+              </RequireAdmin>
+            }
+          ></Route>
+          <Route
+            path="addProduct"
+            element={
+              <RequireAdmin>
+                <AddIProduct></AddIProduct>
               </RequireAdmin>
             }
           ></Route>

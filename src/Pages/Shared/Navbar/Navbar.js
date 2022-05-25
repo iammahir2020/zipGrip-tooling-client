@@ -39,8 +39,8 @@ const Navbar = () => {
           </li>
 
           <li tabIndex="0" className="w-52 lg:w-72 justify-end">
-            <a className="justify-between underline underline-offset-8">
-              {user?.displayName || "User"}
+            <a className="justify-between font-semibold">
+              {user?.displayName}
               <FontAwesomeIcon className="hidden lg:block" icon={faAngleDown} />
               <FontAwesomeIcon
                 className="block lg:hidden"

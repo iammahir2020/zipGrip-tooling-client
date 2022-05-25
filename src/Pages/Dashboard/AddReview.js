@@ -102,7 +102,7 @@ const AddReview = () => {
                   Your review will be posted publicly on the page.
                 </span>
               </p>
-              <div className="review-btn">
+              <div>
                 <input
                   type="submit"
                   className="btn bg-gradient-to-r from-secondary to-primary text-white w-full max-w-lg"
