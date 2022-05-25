@@ -1,17 +1,20 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
+import Loading from "../Shared/Loading/Loading";
 
-const AddIProduct = () => {
+const AddProduct = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [adding, setAdding] = useState(false);
   const navigate = useNavigate();
 
   const imgbbAPIkey = "18a71459c4944f29646f860968c71813";
 
   const handleAddProduct = async (event) => {
+    setAdding(true);
     event.preventDefault();
     const image = event.target.image.files[0];
     const formData = new FormData();
@@ -53,6 +56,7 @@ const AddIProduct = () => {
               navigate("/login");
             }
             if (res.status === 200) {
+              setAdding(false);
               Swal.fire({
                 title: "Success!",
                 text: "Product Added",
@@ -65,6 +69,10 @@ const AddIProduct = () => {
         }
       });
   };
+
+  if (adding) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div>
@@ -151,4 +159,4 @@ const AddIProduct = () => {
   );
 };
 
-export default AddIProduct;
+export default AddProduct;
