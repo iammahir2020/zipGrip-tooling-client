@@ -87,7 +87,7 @@ const MyPortfolio = () => {
         </div>
       </div>
       <h3 className="text-2xl lg:text-4xl text-center mb-10">
-        <span className="font-semibold ">Skills.</span> I have
+        <span className="font-semibold ">Skills</span> I have
       </h3>
       <div className="hero mb-10">
         <div className="hero-content flex-col lg:flex-row-reverse">
@@ -155,11 +155,11 @@ const MyPortfolio = () => {
         </div>
       </div>
       <h3 className="md:hidden text-2xl text-center mt-20">
-        <span className="font-semibold ">Technologies.</span> I know
+        <span className="font-semibold ">Technologies</span> I know
       </h3>
       <div className="lg:bg-base-100 px-6">
         <h3 className="hidden md:block text-2xl lg:text-4xl text-center pt-10">
-          <span className="font-semibold ">Technologies.</span> I know
+          <span className="font-semibold ">Technologies</span> I know
         </h3>
         <div className="mb-10 py-20 lg:py-10 max-w-7xl mx-auto flex flex-col lg:flex-row lg:flex-wrap justify-center lg:justify-between items-center lg:items-baseline gap-10 lg:gap-0">
           <div data-aos="zoom-in" className="card">
@@ -226,7 +226,7 @@ const MyPortfolio = () => {
       </div>
       <div className="max-w-7xl mx-auto mb-20 px-6">
         <h3 className="text-2xl lg:text-4xl mb-10">
-          <span className="font-semibold ">Educational.</span> background
+          <span className="font-semibold ">Educational</span> background
         </h3>
         <div className="card lg:card-side bg-base-100">
           <div className="avatar justify-center md:justify-start">
@@ -246,7 +246,7 @@ const MyPortfolio = () => {
         </div>
       </div>
       <h3 className=" text-2xl lg:text-4xl text-center my-20">
-        <span className="font-semibold ">Personal.</span> Projects
+        <span className="font-semibold ">Personal</span> Projects
       </h3>
       <div className="max-w-7xl mx-auto mb-20 px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project) => (

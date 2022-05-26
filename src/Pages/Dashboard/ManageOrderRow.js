@@ -65,7 +65,7 @@ const ManageOrderRow = ({ order, index, refetch }) => {
       <td>
         {status === "Pending" && (
           <button onClick={handleShipItem} className="btn btn-sm btn-success">
-            <span className="mr-3 hidden lg:block">Ship Item</span>
+            <span className="mr-3 hidden lg:block">Ship Order</span>
             <FontAwesomeIcon
               className="text-xl block lg:hidden"
               icon={faTruckFast}
