@@ -48,7 +48,7 @@ const MyOrderRow = ({ order, index, refetch }) => {
       <td>{itemName}</td>
       <td>{quantity}</td>
       <td>${amountToBePaid}</td>
-      <td>
+      <td className="font-bold">
         {/* {status==="unpaid" && <p className="text-red-500">UnPaid</p>}
         {!shipped ? (
           <p className="text-primary">Pending...</p>

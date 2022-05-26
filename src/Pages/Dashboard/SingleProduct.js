@@ -45,6 +45,10 @@ const SingleProduct = ({ product, index, refetch }) => {
       </td>
       <td>{name}</td>
       {/* <td>update</td> */}
+      <td>{addedBy}</td>
+      <td className="text-center">{available}</td>
+      <td className="text-center">{minimum}</td>
+      <td className="text-center">${price}</td>
       <td>
         <button onClick={handleRemoveProduct} className="btn btn-sm btn-error">
           <span className="mr-3 hidden lg:block">Remove</span>
@@ -54,10 +58,6 @@ const SingleProduct = ({ product, index, refetch }) => {
           />
         </button>
       </td>
-      <td>{addedBy}</td>
-      <td className="text-center">{available}</td>
-      <td className="text-center">{minimum}</td>
-      <td className="text-center">${price}</td>
     </tr>
   );
 };

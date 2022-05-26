@@ -87,6 +87,7 @@ const CheckoutForm = ({ order }) => {
       const payment = {
         order: _id,
         transactionId: paymentIntent.id,
+        status: "Paid",
       };
 
       fetch(`http://localhost:5000/order/${_id}`, {

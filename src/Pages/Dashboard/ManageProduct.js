@@ -24,9 +24,7 @@ const ManageProduct = () => {
               <th></th>
               <th>Name</th>
               {/* <th>Update Stock</th> */}
-              <th>
-                Remove <br /> Product
-              </th>
+
               <th>Added By</th>
               <th>
                 Available <br /> Quantity
@@ -37,6 +35,9 @@ const ManageProduct = () => {
               <th>
                 Price
                 <br /> Per Unit
+              </th>
+              <th>
+                Remove <br /> Product
               </th>
             </tr>
           </thead>
