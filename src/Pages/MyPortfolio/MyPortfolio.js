@@ -271,14 +271,16 @@ const MyPortfolio = () => {
                 >
                   Git Client
                 </a>
-                <a
-                  href={project.gitServer}
-                  rel="noreferrer"
-                  target={"_blank"}
-                  className="btn btn-primary text-white btn-sm"
-                >
-                  Git Server
-                </a>
+                {project.gitServer && (
+                  <a
+                    href={project.gitServer}
+                    rel="noreferrer"
+                    target={"_blank"}
+                    className="btn btn-primary text-white btn-sm"
+                  >
+                    Git Server
+                  </a>
+                )}
               </div>
               <p className="text-bold">Features:</p>
               <ul>

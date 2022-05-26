@@ -9,7 +9,7 @@ const ManageOrder = () => {
     isLoading,
     refetch,
   } = useQuery(["allOrders"], () =>
-    fetch(`http://localhost:5000/order`, {
+    fetch(`https://zipgrip-tooling.herokuapp.com/order`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
@@ -24,7 +24,7 @@ const ManageOrder = () => {
   return (
     <div>
       <h2 className="text-primary text-center lg:text-left text-2xl lg:text-3xl my-4 font-semibold">
-        Manage Orders {orders.length}
+        Manage Orders
       </h2>
       <div className="overflow-x-auto">
         <table className="table table-compact w-full">

@@ -24,7 +24,7 @@ const CheckoutForm = ({ order }) => {
   const [product, isLoading] = useSingleProduct(itemId);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/create-payment-intent`, {
+    fetch(`https://zipgrip-tooling.herokuapp.com/create-payment-intent`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const CheckoutForm = ({ order }) => {
         status: "Paid",
       };
 
-      fetch(`http://localhost:5000/order/${_id}`, {
+      fetch(`https://zipgrip-tooling.herokuapp.com/order/${_id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

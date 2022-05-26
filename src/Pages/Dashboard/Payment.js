@@ -17,7 +17,7 @@ const Payment = () => {
     isLoading,
     refetch,
   } = useQuery(["singleOrder", id], () =>
-    fetch(`http://localhost:5000/order/payment/${id}`, {
+    fetch(`https://zipgrip-tooling.herokuapp.com/order/payment/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

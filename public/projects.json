@@ -48,5 +48,42 @@
                 "name":"Bootstrap"
             }
         ]
+    },
+    {
+        "_id":2,
+        "name":"The Captured Moments",
+        "type":"Individual Catering Service Provider",
+        "liveSite":"https://the-captured-moments.web.app/",
+        "gitClient":"https://github.com/iammahir2020/the-captured-moments",
+        "features":
+        [
+            {
+                "_tid":1,
+                "name":"Users can book services"
+            },
+            {
+                "_tid":2,
+                "name":"Booking page is protected with user authentication"
+            }
+        ],
+        "technologies":
+        [
+            {
+                "_uid":1,
+                "name":"React JS"
+            },
+            {
+                "_uid":2,
+                "name":"Bootstrap"
+            },
+            {
+                "_uid":3,
+                "name":"Firebase"
+            },
+            {
+                "_uid":4,
+                "name":"Vanilla CSS"
+            }
+        ]
     }
 ]

@@ -23,7 +23,7 @@ const MyOrderRow = ({ order, index, refetch }) => {
       confirmButtonText: "Yes, Remove!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/order/${_id}`, {
+        fetch(`https://zipgrip-tooling.herokuapp.com/order/${_id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

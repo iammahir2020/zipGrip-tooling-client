@@ -15,7 +15,7 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery(["orders", user.email], () =>
-    fetch(`http://localhost:5000/order/${user.email}`, {
+    fetch(`https://zipgrip-tooling.herokuapp.com/order/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
@@ -32,7 +32,6 @@ const MyOrders = () => {
       <h2 className="text-primary text-center lg:text-left text-2xl lg:text-3xl my-4 font-semibold">
         My Orders
       </h2>
-      <h2>Number of orders: {orders.length}</h2>
       {orders.length === 0 ? (
         <h2 className="text-center my-20 text-2xl text-gray-500">
           You have not ordered anything

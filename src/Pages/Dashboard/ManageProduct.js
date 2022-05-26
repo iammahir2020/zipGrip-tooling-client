@@ -15,7 +15,6 @@ const ManageProduct = () => {
       <h2 className="text-primary text-center lg:text-left text-2xl lg:text-3xl my-4 font-semibold">
         Manage Products
       </h2>
-      <p>Products added: {products.length}</p>
       <div className="overflow-x-auto">
         <table className="table table-compact w-full">
           <thead>
