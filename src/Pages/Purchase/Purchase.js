@@ -6,6 +6,7 @@ import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
+import useSingleProduct from "../../Hooks/useSingleProduct";
 import useUserInformation from "../../Hooks/useUserInformation";
 import Footer from "../Shared/Footer/Footer";
 import Loading from "../Shared/Loading/Loading";
@@ -18,14 +19,7 @@ const Purchase = () => {
   const navigate = useNavigate();
   const [adding, setAdding] = useState(false);
 
-  const { data: product, isLoading } = useQuery(["singleProduct", id], () =>
-    fetch(`https://zipgrip-tooling.herokuapp.com/product/singleProduct/${id}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-      },
-    }).then((res) => res.json())
-  );
+  const [product, isLoading] = useSingleProduct(id);
 
   const handlePlaceOrder = (event) => {
     setAdding(true);
@@ -62,35 +56,16 @@ const Purchase = () => {
         navigate("/login");
       }
       if (res.status === 200) {
-        const remainingQuantity =
-          parseInt(product.available) - parseInt(order.quantity);
-
-        fetch(`https://zipgrip-tooling.herokuapp.com/product/${product._id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-          },
-          body: JSON.stringify({ remainingQuantity: remainingQuantity }),
-        }).then((res) => {
-          if (res.status === 403 || res.status === 401) {
-            signOut(auth);
-            localStorage.removeItem("jwtToken");
-            navigate("/login");
-          }
-          if (res.status === 200) {
-            setAdding(false);
-            Swal.fire({
-              title: "Order Has been place.",
-              text: "Please complete payment to confirm your order",
-              icon: "success",
-              confirmButtonText: "Proceed",
-            }).then(async (result) => {
-              if (result.isConfirmed) {
-                event.target.reset();
-                navigate("/dashboard/myOrders");
-              }
-            });
+        setAdding(false);
+        Swal.fire({
+          title: "Order Has been place.",
+          text: "Please complete payment to confirm your order",
+          icon: "success",
+          confirmButtonText: "Proceed",
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            event.target.reset();
+            navigate("/dashboard/myOrders");
           }
         });
       }

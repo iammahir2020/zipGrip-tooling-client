@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useSingleProduct from "../../Hooks/useSingleProduct";
+import Loading from "../Shared/Loading/Loading";
+import { signOut } from "firebase/auth";
+import auth from "../../firebase.init";
 
 const CheckoutForm = ({ order }) => {
   const stripe = useStripe();
@@ -14,7 +18,10 @@ const CheckoutForm = ({ order }) => {
   const [disableBtn, setdisableBtn] = useState(false);
   const navigate = useNavigate();
 
-  const { _id, amountToBePaid, customerName, customerEmail } = order;
+  const { _id, itemId, amountToBePaid, quantity, customerName, customerEmail } =
+    order;
+
+  const [product, isLoading] = useSingleProduct(itemId);
 
   useEffect(() => {
     fetch(`http://localhost:5000/create-payment-intent`, {
@@ -32,6 +39,10 @@ const CheckoutForm = ({ order }) => {
         }
       });
   }, [amountToBePaid]);
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -91,13 +102,39 @@ const CheckoutForm = ({ order }) => {
           console.log(data);
           setProcessing(false);
           setdisableBtn(true);
-          Swal.fire(
-            `Payment is successful!`,
-            `Your TransectionID is ${paymentIntent.id}`,
-            "success"
-          ).then(async (result) => {
-            if (result.isConfirmed) {
-              navigate("/dashboard/myOrders");
+
+          console.log(quantity, "quantity");
+          console.log(product.available, "available");
+
+          const remainingQuantity =
+            parseInt(product.available) - parseInt(quantity);
+
+          fetch(
+            `https://zipgrip-tooling.herokuapp.com/product/${product._id}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+              },
+              body: JSON.stringify({ remainingQuantity: remainingQuantity }),
+            }
+          ).then((res) => {
+            if (res.status === 403 || res.status === 401) {
+              signOut(auth);
+              localStorage.removeItem("jwtToken");
+              navigate("/login");
+            }
+            if (res.status === 200) {
+              Swal.fire(
+                `Payment is successful!`,
+                `Your TransectionID is ${paymentIntent.id}`,
+                "success"
+              ).then(async (result) => {
+                if (result.isConfirmed) {
+                  navigate("/dashboard/myOrders");
+                }
+              });
             }
           });
         });
