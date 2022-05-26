@@ -10,6 +10,8 @@ const ManageOrderRow = ({ order, index, refetch }) => {
   const handleShipItem = () => {
     const status = {
       status: "Shipped",
+      transactionId: transactionId,
+      order: _id,
     };
 
     fetch(`https://zipgrip-tooling.herokuapp.com/order/${_id}`, {

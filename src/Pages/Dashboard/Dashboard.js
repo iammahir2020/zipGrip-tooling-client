@@ -62,6 +62,9 @@ const Dashboard = () => {
               <li className="my-1">
                 <NavLink to="/dashboard/manageOrder">Manage Orders</NavLink>
               </li>
+              <li className="my-1">
+                <NavLink to="/dashboard/allPayments">All Payments</NavLink>
+              </li>
             </>
           )}
         </ul>
