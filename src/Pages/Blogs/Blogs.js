@@ -17,7 +17,19 @@ const Blogs = () => {
             </div>
             <div className="collapse-content">
               <p>
-                tabIndex="0" attribute is necessary to make the div focusable
+                It is critical to improve the performance of a website. Users
+                may lose interest and quit if a website takes too long to load a
+                page or graphics. Here are some tips for improving the
+                performance of a React application. Whenever possible, keep
+                component states local. This, however, can result in
+                disorganized and difficult-to-understand code. It is useful for
+                small-scale applications. Memory can be utilized to cache a
+                component so that it can be re-rendered from cache memory if the
+                props are not modified. Because not all images load at the same
+                time, lazy loading images can increase application speed. Using
+                dynamic import() to split code allows you to split a huge file
+                into little chunks, which enhances the application's
+                performance.
               </p>
             </div>
           </div>
@@ -31,23 +43,22 @@ const Blogs = () => {
             </div>
             <div className="collapse-content">
               <p>
-                tabIndex="0" attribute is necessary to make the div focusable
+                There are several approaches to manage state in a React
+                application. Local State: keep track of all components in a
+                single file. To handle local states, useState() and usereducer()
+                can be employed. Global State: data management across multiple
+                components. To manage global state, utilize lifting state up or
+                context api. ServerState: External server data that must be
+                merged with our current UI state. It is a simple notion, yet it
+                might be difficult to implement. To manage server state,
+                useEffet () and useSWR() can be utilized. Url State: Information
+                about a URL. This could be parameters or a query. The function
+                useParams() can be utilized. With react router, useHistory() and
+                useLocation() can be used.
               </p>
             </div>
           </div>
-          <div
-            tabIndex="0"
-            className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box my-6"
-          >
-            <div className="collapse-title text-xl font-medium">
-              How does prototypical inheritance work?
-            </div>
-            <div className="collapse-content">
-              <p>
-                tabIndex="0" attribute is necessary to make the div focusable
-              </p>
-            </div>
-          </div>
+
           <div
             tabIndex="0"
             className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box my-6"
@@ -59,7 +70,24 @@ const Blogs = () => {
             </div>
             <div className="collapse-content">
               <p>
-                tabIndex="0" attribute is necessary to make the div focusable
+                We should avoid setting the state directly because it causes a
+                number of issues. Some examples are as follows:
+                <ul>
+                  <li>
+                    # If we immediately alter it, executing setState()
+                    thereafter may simply replace the update we did.
+                  </li>
+                  <li>
+                    # When we directly update the state, it does not immediately
+                    modify the value.Instead, it produces a pending state
+                    transition, which can only be accessed after calling this
+                    function.
+                  </li>
+                  <li>
+                    # We will lose control of the state in all of the
+                    components.
+                  </li>
+                </ul>
               </p>
             </div>
           </div>
@@ -74,7 +102,13 @@ const Blogs = () => {
             </div>
             <div className="collapse-content">
               <p>
-                tabIndex="0" attribute is necessary to make the div focusable
+                <p className="mb-2">
+                  We use Filter() fucntion on an array of objects to find an
+                  array of objects based on any attribute of the objects
+                </p>
+                <div class="mockup-code">
+                  <code className="ml-5">{`products.filter((product)=>{product.name=="apple"})`}</code>
+                </div>
               </p>
             </div>
           </div>
@@ -86,9 +120,20 @@ const Blogs = () => {
               What is a unit test? Why should write unit tests?
             </div>
             <div className="collapse-content">
-              <p>
-                tabIndex="0" attribute is necessary to make the div focusable
-              </p>
+              <div>
+                <p>
+                  Unit testing is a sort of software testing that involves
+                  testing individual units or bits of code. Its goal is to
+                  ensure that each unit of code works as planned. A unit can be
+                  a single line of code, a method, or an entire class. Our tests
+                  can run quickly when we test extremely small components.
+                </p>
+                <p>
+                  We should write unit tests since they save time, serve as
+                  documentation for future developers working on the system,
+                  make debugging easier, allow for code reuse, and so on.
+                </p>
+              </div>
             </div>
           </div>
         </div>
