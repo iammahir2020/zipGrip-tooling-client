@@ -171,7 +171,7 @@ const CheckoutForm = ({ order }) => {
               Make payment
             </button>
           ) : (
-            <button class="btn bg-gradient-to-r from-secondary to-primary text-white my-3 loading">
+            <button className="btn bg-gradient-to-r from-secondary to-primary text-white my-3 loading">
               Processing
             </button>
           )}

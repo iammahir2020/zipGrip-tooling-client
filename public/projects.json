@@ -85,5 +85,52 @@
                 "name":"Vanilla CSS"
             }
         ]
+    },
+    {
+        
+        "_id":3,
+        "name":"To Do App",
+        "type":"Basic Task List Application ",
+        "liveSite":"https://to-do-app-a15bc.web.app/",
+        "gitClient":"https://github.com/iammahir2020/to-do-app",
+        "gitServer":"https://github.com/iammahir2020/to-do-app-server",
+        "features":
+        [
+            {
+                "_tid":1,
+                "name":"Add and manage task"
+            },
+            {
+                "_tid":2,
+                "name":"User based information"
+            }
+        ],
+        "technologies":
+        [
+            {
+                "_uid":1,
+                "name":"React JS"
+            },
+            {
+                "_uid":3,
+                "name":"Firebase"
+            },
+            {
+                "_uid":2,
+                "name":"Node JS"
+            },
+            {
+                "_uid":3,
+                "name":"Express JS"
+            },
+            {
+                "_uid":4,
+                "name":"MongoDB"
+            },
+            {
+                "_uid":5,
+                "name":"Firebase"
+            }
+        ]
     }
 ]
