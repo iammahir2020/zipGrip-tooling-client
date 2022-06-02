@@ -15,11 +15,11 @@ const WhyUs = () => {
               Why Choose Us?
             </h3>
             <p className="text-center lg:text-left py-6 text-xl capitalize">
-              Zipgrip Tooling Is A Tools Brand That Supplies Tools For Every
-              Home. Distributing High-End Tools To Help You Create Your Dream
-              Project, Home, Or Application. We Are Your Partners, Confidants,
-              And, Most Importantly, Guidance To Help You Complete Important
-              Projects.
+              Zipgrip Tooling Is A Tool Manufacturing Brand That Supplies Tools
+              For Every Home. Distributing High-End Tools To Help You Create
+              Your Dream Project, Home, Or Application. We Are Your Partners,
+              Confidants, And, Most Importantly, Guidance To Help You Complete
+              Important Projects.
             </p>
           </div>
         </div>
