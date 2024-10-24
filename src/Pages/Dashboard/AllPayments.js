@@ -5,7 +5,7 @@ import AllPaymentsRow from "./AllPaymentsRow";
 
 const AllPayments = () => {
   const { data: payments, isLoading } = useQuery(["allPayments"], () =>
-    fetch(`https://zipgrip-tooling.herokuapp.com/payment`, {
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/payment`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

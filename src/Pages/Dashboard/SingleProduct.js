@@ -17,7 +17,7 @@ const SingleProduct = ({ product, index, refetch }) => {
       confirmButtonText: "Yes, Remove!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(`https://zipgrip-tooling.herokuapp.com/product/${product._id}`, {
+        fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/product/${product._id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

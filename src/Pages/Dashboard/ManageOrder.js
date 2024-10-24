@@ -9,7 +9,7 @@ const ManageOrder = () => {
     isLoading,
     refetch,
   } = useQuery(["allOrders"], () =>
-    fetch(`https://zipgrip-tooling.herokuapp.com/order`, {
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/order`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

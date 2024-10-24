@@ -22,7 +22,7 @@ const AddReview = () => {
       rating: rating,
     };
     // console.log(review);
-    fetch("https://zipgrip-tooling.herokuapp.com/review", {
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/review`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

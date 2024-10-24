@@ -6,7 +6,7 @@ const useAdmin = (user) => {
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      fetch(`https://zipgrip-tooling.herokuapp.com/admin/${email}`, {
+      fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/admin/${email}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

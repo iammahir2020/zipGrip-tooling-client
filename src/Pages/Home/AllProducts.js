@@ -7,7 +7,7 @@ import SingleProductCard from "./SingleProductCard";
 const AllProducts = () => {
   const navigate = useNavigate();
   const { data: products, isLoading } = useQuery(["productsHome"], () =>
-    fetch(`https://zipgrip-tooling.herokuapp.com/product/${"home"}`).then(
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/product/${"home"}`).then(
       (res) => res.json()
     )
   );

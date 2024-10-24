@@ -15,7 +15,7 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery(["orders", user.email], () =>
-    fetch(`https://zipgrip-tooling.herokuapp.com/order/${user.email}`, {
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/order/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

@@ -10,7 +10,7 @@ const useProductsInformation = () => {
     isLoading,
     refetch,
   } = useQuery(["allProducts"], () =>
-    fetch(`https://zipgrip-tooling.herokuapp.com/product`, {
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/product`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

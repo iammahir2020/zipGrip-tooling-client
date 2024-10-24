@@ -6,7 +6,7 @@ const useUserInformation = (user) => {
     isLoading: isLoadingUser,
     refetch,
   } = useQuery(["user", user.email], () =>
-    fetch(`https://zipgrip-tooling.herokuapp.com/profile/${user.email}`, {
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/profile/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

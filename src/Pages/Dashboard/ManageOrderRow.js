@@ -14,7 +14,7 @@ const ManageOrderRow = ({ order, index, refetch }) => {
       order: _id,
     };
 
-    fetch(`https://zipgrip-tooling.herokuapp.com/order/${_id}`, {
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/order/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const ManageOrderRow = ({ order, index, refetch }) => {
       confirmButtonText: "Yes, Remove!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(`https://zipgrip-tooling.herokuapp.com/order/${_id}`, {
+        fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/order/${_id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

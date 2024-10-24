@@ -24,7 +24,7 @@ const CheckoutForm = ({ order }) => {
   const [product, isLoading] = useSingleProduct(itemId);
 
   useEffect(() => {
-    fetch(`https://zipgrip-tooling.herokuapp.com/create-payment-intent`, {
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/create-payment-intent`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const CheckoutForm = ({ order }) => {
         status: "Paid",
       };
 
-      fetch(`https://zipgrip-tooling.herokuapp.com/order/${_id}`, {
+      fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/order/${_id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -111,7 +111,7 @@ const CheckoutForm = ({ order }) => {
             parseInt(product.available) - parseInt(quantity);
 
           fetch(
-            `https://zipgrip-tooling.herokuapp.com/product/${product._id}`,
+            `${process.env.REACT_APP_LOCAL_SERVER_URL}/product/${product._id}`,
             {
               method: "PUT",
               headers: {

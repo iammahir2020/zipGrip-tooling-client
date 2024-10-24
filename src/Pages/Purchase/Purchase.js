@@ -42,7 +42,7 @@ const Purchase = () => {
     };
     console.log(order);
 
-    fetch("https://zipgrip-tooling.herokuapp.com/order", {
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

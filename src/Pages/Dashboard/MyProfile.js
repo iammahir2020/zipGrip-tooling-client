@@ -58,7 +58,7 @@ const MyProfile = () => {
         if (result.success) {
           const img = result.data.url;
           fetch(
-            `https://zipgrip-tooling.herokuapp.com/profilePicture/${user.email}`,
+            `${process.env.REACT_APP_LOCAL_SERVER_URL}/profilePicture/${user.email}`,
             {
               method: "PUT",
               headers: {
@@ -99,7 +99,7 @@ const MyProfile = () => {
       linkedIn: event.target.linkedIn.value,
     };
     // console.log(profile);
-    fetch(`https://zipgrip-tooling.herokuapp.com/profile/${user.email}`, {
+    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/profile/${user.email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -120,7 +120,7 @@ const MyProfile = () => {
   const handleRemoveDp = () => {
     setUpdateLoading(true);
     fetch(
-      `https://zipgrip-tooling.herokuapp.com/profilePicture/${user.email}`,
+      `${process.env.REACT_APP_LOCAL_SERVER_URL}/profilePicture/${user.email}`,
       {
         method: "PUT",
         headers: {
