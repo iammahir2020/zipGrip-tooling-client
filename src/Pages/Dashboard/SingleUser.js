@@ -8,7 +8,7 @@ const SingleUser = ({ user, index, refetch }) => {
   const { position, email } = user;
 
   const handleMakeAdmin = () => {
-    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/user/admin/${email}`, {
+    fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
@@ -38,7 +38,7 @@ const SingleUser = ({ user, index, refetch }) => {
       confirmButtonText: "Yes, Remove!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/user/${email}`, {
+        fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/user/${email}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

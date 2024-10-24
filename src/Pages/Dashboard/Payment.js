@@ -17,7 +17,7 @@ const Payment = () => {
     isLoading,
     refetch,
   } = useQuery(["singleOrder", id], () =>
-    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/order/payment/${id}`, {
+    fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/order/payment/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

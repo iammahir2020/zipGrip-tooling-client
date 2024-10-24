@@ -6,7 +6,7 @@ const useToken = (user) => {
     const email = user?.user?.email;
     const userData = { email: email };
     if (email) {
-      fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/user/${email}`, {
+      fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/user/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

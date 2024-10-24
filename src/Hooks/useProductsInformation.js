@@ -10,7 +10,7 @@ const useProductsInformation = () => {
     isLoading,
     refetch,
   } = useQuery(["allProducts"], () =>
-    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/product`, {
+    fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/product`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

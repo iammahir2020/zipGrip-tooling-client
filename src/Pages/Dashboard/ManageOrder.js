@@ -9,7 +9,7 @@ const ManageOrder = () => {
     isLoading,
     refetch,
   } = useQuery(["allOrders"], () =>
-    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/order`, {
+    fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/order`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

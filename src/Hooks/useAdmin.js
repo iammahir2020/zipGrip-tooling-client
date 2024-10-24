@@ -6,7 +6,7 @@ const useAdmin = (user) => {
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/admin/${email}`, {
+      fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/admin/${email}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

@@ -41,7 +41,7 @@ const AddProduct = () => {
             image: img,
           };
           console.log(product);
-          fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/product`, {
+          fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/product`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -42,7 +42,7 @@ const Purchase = () => {
     };
     console.log(order);
 
-    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/order`, {
+    fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

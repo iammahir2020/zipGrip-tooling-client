@@ -7,7 +7,7 @@ const AllReviews = () => {
   const [toggle, setToggle] = useState(false);
 
   const { data: reviews, isLoading } = useQuery(["reviews"], () =>
-    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/review`).then((res) =>
+    fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/review`).then((res) =>
       res.json()
     )
   );

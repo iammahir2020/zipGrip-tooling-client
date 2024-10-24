@@ -9,7 +9,7 @@ const MakeAdmin = () => {
     isLoading,
     refetch,
   } = useQuery(["users"], () =>
-    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/user`, {
+    fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/user`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwtToken")}`,

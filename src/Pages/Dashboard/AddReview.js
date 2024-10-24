@@ -22,7 +22,7 @@ const AddReview = () => {
       rating: rating,
     };
     // console.log(review);
-    fetch(`${process.env.REACT_APP_LOCAL_SERVER_URL}/review`, {
+    fetch(`${process.env.REACT_APP_LIVE_SERVER_URL}/review`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
